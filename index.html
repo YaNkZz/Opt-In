@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Erst die Diagnose. Dann die Maßnahme. Screening</title>
+<title>Erst die Diagnose. Dann die Maßnahme.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #F2F5F6;
@@ -34,30 +34,52 @@
   --bg: #11191B; --surface: #192427; --ink: #E6EEF0; --muted: #9DB0B5;
   --line: #2C3D41; --accent: #7CC3D6; --accent-ink: #0E1A1D; --soft: #1F3338; --mark: #E58A63;
 }
-html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 1rem); scroll-behavior: smooth; }
 *, *::before, *::after { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 1.0625rem; line-height: 1.6; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 1.0625rem; line-height: 1.65; }
 main { max-width: 46rem; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
 h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.2; margin: 0 0 .75rem; }
-h1 { font-size: clamp(2.1rem, 7vw, 3.1rem); }
-h2 { font-size: clamp(1.5rem, 4.5vw, 1.9rem); }
-h3 { font-size: 1.3rem; }
+h1 { font-size: clamp(2.3rem, 8vw, 3.6rem); margin-bottom: 1rem; }
+h2 { font-size: clamp(1.6rem, 5vw, 2.1rem); }
+h3 { font-size: 1.3rem; margin-top: 2rem; }
 p { margin: 0 0 1rem; max-width: 62ch; }
 .lead { color: var(--muted); }
+.sub { font-size: 1.2rem; color: var(--muted); max-width: 48ch; }
+.book { font-size: .95rem; color: var(--muted); margin-bottom: 1.5rem; }
+.toc { display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: 0 0 1rem; list-style: none; }
+.toc a { display: block; padding: .35rem .8rem; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; background: var(--surface); font-size: .95rem; }
+.toc a:hover { border-color: var(--accent); }
+section.part { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+section.part:first-of-type { border-top: 0; }
 .notice { border-left: 4px solid var(--accent); background: var(--soft); padding: .9rem 1.1rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; max-width: 62ch; }
 .notice p:last-child { margin-bottom: 0; }
-.tip { font-style: italic; color: var(--muted); max-width: 62ch; margin-bottom: 1.75rem; }
-.list { display: grid; gap: .75rem; padding: 0; margin: 0; list-style: none; }
-.pick { width: 100%; text-align: left; font: inherit; color: inherit; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 1.1rem 1.25rem; cursor: pointer; display: block; }
-.pick:hover { border-color: var(--accent); }
-.pick strong { display: block; font-family: var(--serif); font-size: 1.35rem; font-weight: 600; margin-bottom: .2rem; }
-.pick span { color: var(--muted); display: block; }
-.pick small { display: block; margin-top: .5rem; color: var(--accent); font-weight: 700; }
+.tip { font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: var(--muted); max-width: 56ch; margin: 1.5rem 0 1.75rem; padding-left: 1rem; border-left: 2px solid var(--line); }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-.back { background: none; border: 0; font: inherit; color: var(--accent); cursor: pointer; padding: .25rem 0; margin-bottom: 1.25rem; text-decoration: underline; }
+a { color: var(--accent); }
+
+/* Nutt Balken */
+.bars { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 1rem 1.25rem; margin: 1.25rem 0 1.5rem; }
+.bars .cap { font-weight: 700; margin-bottom: .9rem; max-width: none; }
+.bar { display: grid; grid-template-columns: 1fr auto; gap: .15rem .75rem; margin-bottom: .8rem; align-items: center; }
+.bar .t { height: 10px; background: var(--line); border-radius: 5px; overflow: hidden; grid-column: 1 / -1; }
+.bar .t i { display: block; height: 100%; background: var(--accent); border-radius: 5px; }
+.bar b { font-family: var(--serif); font-size: 1.15rem; }
+.bars .note { color: var(--muted); font-size: .95rem; margin: .25rem 0 0; }
+
+/* Fälle */
+.case { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; margin: 0 0 1rem; overflow: hidden; }
+.case h3 { margin: 0; padding: .9rem 1.25rem; background: var(--soft); font-size: 1.25rem; }
+.case dl { margin: 0; }
+.case .r { display: grid; grid-template-columns: 11rem 1fr; gap: .25rem 1rem; padding: .75rem 1.25rem; border-top: 1px solid var(--line); }
+.case dt { font-weight: 700; color: var(--muted); }
+.case dd { margin: 0; }
+.case .r.key { background: color-mix(in srgb, var(--soft) 45%, transparent); }
+@media (max-width: 38rem) { .case .r { grid-template-columns: 1fr; } }
+
+/* Fragebogen */
 .progress { height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; margin: 1.25rem 0 .4rem; }
 .progress > div { height: 100%; width: 0; background: var(--accent); transition: width .2s ease; }
-.count { color: var(--muted); font-size: .95rem; margin-bottom: 1.5rem; }
+.count { color: var(--muted); font-size: .95rem; margin-bottom: 1rem; }
 .field-head { margin: 2rem 0 .75rem; }
 .field-head h3 { margin: 0; }
 .item { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; margin: 0 0 .85rem; padding: 1rem 1.1rem 1.1rem; min-width: 0; }
@@ -71,8 +93,12 @@ p { margin: 0 0 1rem; max-width: 62ch; }
 .btn { font: inherit; font-weight: 700; background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 8px; padding: .8rem 1.5rem; cursor: pointer; }
 .btn:disabled { opacity: .45; cursor: not-allowed; }
 .btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-.row { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
-.score { display: flex; align-items: baseline; gap: .6rem; margin: 1rem 0 .5rem; }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1rem; margin-top: 1.5rem; }
+
+/* Auswertung */
+.personal { background: var(--surface); border: 2px solid var(--accent); border-radius: 10px; padding: 1.25rem 1.4rem 1.4rem; margin: 1.5rem 0 2rem; }
+.personal h3 { margin-top: 0; }
+.score { display: flex; align-items: baseline; gap: .6rem; margin: .5rem 0 .5rem; }
 .score b { font-family: var(--serif); font-size: clamp(3.5rem, 14vw, 5.5rem); line-height: 1; color: var(--accent); }
 .score span { color: var(--muted); font-size: 1.2rem; }
 .scale-wrap { position: relative; margin-top: 1.25rem; }
@@ -80,209 +106,370 @@ p { margin: 0 0 1rem; max-width: 62ch; }
 .scale i { display: block; height: 100%; }
 .pin { position: absolute; top: -6px; width: 4px; height: 26px; background: var(--mark); border-radius: 2px; transform: translateX(-50%); }
 .ticks { display: flex; justify-content: space-between; color: var(--muted); font-size: .9rem; margin-top: .4rem; }
-.band { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 1rem 1.25rem; margin-top: 1.25rem; }
-.band p:last-child { margin-bottom: 0; }
-.fields { margin-top: 2rem; }
 .frow { display: grid; grid-template-columns: 1fr auto; gap: .2rem .75rem; align-items: center; margin-bottom: .9rem; }
 .frow .name { font-weight: 700; }
 .frow .num { color: var(--muted); }
 .frow .track { grid-column: 1 / -1; height: 10px; background: var(--line); border-radius: 5px; overflow: hidden; }
 .frow .fill { height: 100%; background: var(--accent); border-radius: 5px; }
+.fieldrows { margin-top: 1.5rem; }
+.bandlist { display: grid; gap: .75rem; margin: 1.25rem 0 0; padding: 0; list-style: none; }
+.bandlist li, .patlist li { display: grid; grid-template-columns: 7rem 1fr; gap: .25rem 1rem; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: .9rem 1.1rem; }
+.bandlist .rg { font-family: var(--serif); font-size: 1.4rem; font-weight: 600; line-height: 1.2; }
+.bandlist .bt p:last-child { margin-bottom: 0; }
+.bandlist .bt strong { display: block; margin-bottom: .2rem; }
+.patlist { display: grid; gap: .75rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+.patlist li { grid-template-columns: 1fr; }
+.patlist p { margin: 0; }
+.patlist strong { display: block; margin-bottom: .2rem; }
+li.active { border: 2px solid var(--accent) !important; background: var(--soft) !important; }
+.badge { display: none; font-size: .9rem; font-weight: 700; color: var(--accent); margin-top: .35rem; }
+li.active .badge { display: block; }
+@media (max-width: 38rem) { .bandlist li { grid-template-columns: 1fr; } }
 .fine { color: var(--muted); font-size: .95rem; margin-top: 1.5rem; }
-.more { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+
+/* Teil 5, Quellen */
 .more ul { padding-left: 1.2rem; margin: 0 0 1rem; max-width: 62ch; }
 .more li { margin-bottom: .4rem; }
-a { color: var(--accent); }
+.refs { padding: 0; margin: 0; list-style: none; font-size: .95rem; }
+.refs li { margin-bottom: .7rem; max-width: 66ch; overflow-wrap: anywhere; }
+footer { margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .95rem; }
 [hidden] { display: none !important; }
-@media (prefers-reduced-motion: reduce) { .progress > div { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .progress > div { transition: none; } html { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
 <main>
 
-<section id="home">
-  <h1>Erst die Diagnose. Dann die Maßnahme.</h1>
-  <p class="lead">Workshops, Trainings und Coachings laufen oft ins Leere. Mit diesem Screening schätzen Sie ein, ob bei Ihnen etwas mitwirkt, das von innen schwer zu sehen ist.</p>
-  <ul class="list" id="list"></ul>
-  <div class="notice">
-    <p><strong>Datenschutz</strong></p>
-    <p>Ihre Antworten werden weder gespeichert noch übertragen. Die Auswertung geschieht direkt in Ihrem Browser und verschwindet, sobald Sie die Seite schließen.</p>
+<header>
+  <h1>Erst die Diagnose.<br>Dann die Maßnahme.</h1>
+  <p class="sub">Warum Workshops, Trainings und Coachings oft ins Leere laufen, und woran Sie erkennen, ob bei Ihnen etwas darunterliegt.</p>
+  <p class="book">Begleitmaterial zum Buch „Blindspot: Was Organisationen nicht sehen“ von Claas Lahmann und Anne-Maria Müller.</p>
+  <ul class="toc">
+    <li><a href="#vorbemerkung">Vorbemerkung</a></li>
+    <li><a href="#teil1">Eine Zahl, die nicht stimmt</a></li>
+    <li><a href="#teil2">Sechs Fehlzuordnungen</a></li>
+    <li><a href="#teil3">Das Screening</a></li>
+    <li><a href="#teil4">Auswertung</a></li>
+    <li><a href="#teil5">Genauere Betrachtung</a></li>
+    <li><a href="#quellen">Quellen</a></li>
+  </ul>
+</header>
+
+<section class="part" id="vorbemerkung">
+  <h2>Vorbemerkung</h2>
+  <p>Dieses Material setzt dort an, wo das Buch endet. Wer es gelesen hat, weiß, dass unter dem sichtbaren Verhalten einer Organisation etwas wirkt, das sich nicht von selbst zeigt. Bleibt die Frage, die dort offenbleibt: Was heißt das für die nächste Initiative, die auf Ihrem Tisch liegt? Für das Führungskräfteprogramm, den Teamworkshop, das Coaching für eine Abteilung, die externe Begleitung des Veränderungsprojekts?</p>
+  <p>Solche Interventionen binden Geld, Zeit und Aufmerksamkeit, und allzu oft hält ihre Wirkung nicht an. Dieses Material erklärt, woran das liegt, und es endet mit einem Bogen, mit dem Sie für Ihre eigene Lage einschätzen können, ob hier etwas mitwirkt, das von innen schwer zu sehen ist.</p>
+</section>
+
+<section class="part" id="teil1">
+  <h2>Teil 1: Eine Zahl, die nicht stimmt</h2>
+  <p>In fast jeder Präsentation zum Thema Veränderung taucht sie auf: Siebzig Prozent aller Change-Projekte scheitern. Die Zahl ist eindrucksvoll, sie ist eingängig, und sie ist nicht belegt. Woher stammt sie eigentlich?</p>
+  <p>Der Organisationsforscher Mark Hughes von der University of Brighton (2011) hat fünf publizierte Fundstellen dieser Zahl geprüft und in keiner eine valide empirische Grundlage gefunden. Die früheste stammt von Michael Hammer und James Champy (1993): Sie schätzten, dass 50 bis 70 Prozent der Organisationen, die ein Reengineering-Vorhaben beginnen, nicht die erhofften Ergebnisse erreichen, und nannten diese Schätzung selbst ausdrücklich unwissenschaftlich. Zwei Jahre später stellte Hammer klar, es gebe keine dem Reengineering innewohnende Erfolgs- oder Misserfolgsquote.</p>
+  <p>Auch John Kotter, auf den die Zahl häufig zurückgeführt wird, hat sie in seinem berühmten Aufsatz von 1995 nicht geschrieben. Dort steht lediglich, die meisten der über hundert von ihm begleiteten Veränderungsvorhaben lägen irgendwo dazwischen, mit deutlicher Neigung zum unteren Ende. Erst 2008 nennt er „mehr als 70 Prozent“, als persönliche Schätzung und mit einer Definition, die auch mitzählt, was verspätet, über Budget oder mit abgesenkten Ansprüchen endet.</p>
+  <p>Für die Praxis hat das Folgen. Wer mit dieser Zahl arbeitet, unterstellt Veränderungsvorhaben eine natürliche Misserfolgsquote, als sei Scheitern ein Naturgesetz, gegen das man wenig ausrichten kann. Die belastbare Forschung kommt zu einem anderen Ergebnis und zu einem brauchbareren: Sie zeigt, woran es tatsächlich liegt.</p>
+
+  <h3>Was tatsächlich belegt ist</h3>
+  <p>Der Managementforscher Paul Nutt (1999) hat 356 reale Entscheidungen in mittleren und großen Organisationen in den USA und Kanada untersucht. Als wichtigster Erfolgsmaßstab galt, ob die Entscheidung am Ende tatsächlich genutzt wurde, jede einzelne wurde dafür zwei Jahre lang verfolgt. Etwa die Hälfte scheiterte an diesem Maßstab.</p>
+  <p>In zwei von drei Fällen kamen Vorgehensweisen zum Einsatz, die als anfällig für Misserfolg gelten: eine früh gewählte Lösung durchsetzen, die Suche nach Alternativen begrenzen, Widerstand mit Macht überwinden. Eine Idee liegt auf dem Tisch, sie wird plausibel gefunden, und der ganze weitere Aufwand geht in ihre Durchsetzung statt in ihre Prüfung.</p>
+  <p>Die Zahlen dazu sind eindeutig. Wurde eine fertige Idee aufgegriffen, überstanden 56 Prozent der Entscheidungen die zwei Jahre. Wurde stattdessen das Problem analysiert, waren es 55 Prozent. Wurde erst ein Ziel gesetzt und dann nach Wegen gesucht, stieg der Wert auf 70 Prozent. Und wurde zu Beginn belegt und begründet, woran es überhaupt fehlt, hielten 96 Prozent der Entscheidungen. Ausgerechnet diese wirksamste Vorgehensweise kam nur in sieben Prozent der Fälle vor.</p>
+
+  <div class="bars" role="group" aria-label="Anteil der Entscheidungen, die zwei Jahre überstanden">
+    <p class="cap">Anteil der Entscheidungen, die nach zwei Jahren noch genutzt wurden</p>
+    <div class="bar"><span>Fertige Idee aufgegriffen</span><b>56 %</b><div class="t"><i style="width:56%"></i></div></div>
+    <div class="bar"><span>Problem analysiert</span><b>55 %</b><div class="t"><i style="width:55%"></i></div></div>
+    <div class="bar"><span>Erst Ziel gesetzt, dann Wege gesucht</span><b>70 %</b><div class="t"><i style="width:70%"></i></div></div>
+    <div class="bar"><span>Zu Beginn belegt, woran es fehlt</span><b>96 %</b><div class="t"><i style="width:96%"></i></div></div>
+    <p class="note">Nach Nutt (1999). Die letzte Vorgehensweise kam nur in 7 Prozent der Fälle vor.</p>
   </div>
+
+  <p>Bemerkenswert ist, wie wenig das mit fehlendem Wissen zu tun hat. Dass Beteiligung die Annahme einer Entscheidung erleichtert, war fast allen Befragten geläufig, eingesetzt wurde sie trotzdem nur in jeder fünften Entscheidung. Und wer sich überhaupt mehrere Optionen erarbeitete, kam auf 70 statt 56 Prozent. Getan wurde auch das in weniger als jeder fünften Entscheidung.</p>
+  <p>Wer schnell festlegt, zahlt also drauf. Aber was wäre stattdessen zu klären? Darauf gibt Nutt keine Antwort, der zweite Befund schon.</p>
+  <p>Er widerspricht dem Alltagseindruck: Maßnahmen wirken. Die Metaanalyse von Lacerenza und Kollegen (2017) über 335 unabhängige Stichproben findet für Führungskräftetrainings deutliche Effekte auf Lernen und auf den Transfer in den Arbeitsalltag. Theeboom und Kollegen (2014) finden für Coaching in allen untersuchten Ergebnisbereichen positive Effekte, im Mittel von mittlerer Stärke. Am Instrument liegt es also nicht.</p>
+  <p>Was den Unterschied macht, sind die Bedingungen. Lacerenza und Kollegen (2017) nennen unter den Faktoren, die die Wirkung nachweislich erhöhen, eine vorgeschaltete Analyse des tatsächlichen Bedarfs, in der Trainingsforschung needs analysis genannt, der Sache nach nichts anderes als eine Klärung vor der Maßnahme. Blume und Kollegen (2010) beschreiben die Bedingungen danach: ein unterstützendes Arbeitsumfeld, insbesondere durch die Vorgesetzten, ein günstiges Transferklima und die Gelegenheit, das Gelernte tatsächlich anzuwenden. Ein gutes Training in einer Organisation, die das Gelernte nicht zulässt, verpufft. Nicht die Maßnahme scheitert also, sondern ihre Zuordnung: Sie setzt an einer Stelle an, an der das Hindernis nicht liegt.</p>
+
+  <h3>Warum wir trotzdem sofort handeln wollen</h3>
+  <p>Der Impuls, bei Schwierigkeiten unverzüglich etwas zu unternehmen, ist verständlich und ehrenwert. Wer Verantwortung trägt, will nicht zusehen, und Untätigkeit wirkt in Organisationen doch schnell wie Gleichgültigkeit. Handeln entlastet außerdem, auch den, der handelt.</p>
+  <p>In der Medizin käme trotzdem niemand auf die Idee, eine Behandlung zu beginnen, bevor klar ist, was vorliegt. Nicht weil Ärzte weniger unter Druck stünden, sondern weil die Erfahrung zeigt, dass eine Behandlung ohne Befund im besseren Fall wirkungslos bleibt und im schlechteren schadet. Für Organisationen gilt dasselbe, nur dass es dort seltener ausgesprochen wird.</p>
+  <p>Wie eine solche Fehlzuordnung konkret aussieht, zeigen die folgenden sechs Fälle.</p>
+</section>
+
+<section class="part" id="teil2">
+  <h2>Teil 2: Sechs Fehlzuordnungen</h2>
+  <p>Die folgenden sechs Muster sind Konstellationen, wie sie uns in der Arbeit mit Organisationen immer wieder begegnen. Anonymisiert und verdichtet, zeigen sie jeweils dieselbe Bewegung: eine plausible Beobachtung, eine naheliegende Maßnahme und eine Dynamik darunter, an der die Maßnahme vorbeigeht.</p>
+
+  <article class="case">
+    <h3>1. Der Ruf nach mehr Kommunikation</h3>
+    <dl>
+      <div class="r"><dt>Was beobachtet wird</dt><dd>Auf allen Ebenen wird beklagt, es werde zu wenig kommuniziert. Gleichzeitig existieren bereits zahlreiche etablierte Kommunikationskanäle, und die Leitung erlebt die Forderung mit einer gewissen Hilflosigkeit.</dd></div>
+      <div class="r"><dt>Was naheliegt</dt><dd>Ein weiterer Kanal, ein Newsletter, ein Townhall-Format, ein Kommunikationstraining für Führungskräfte.</dd></div>
+      <div class="r key"><dt>Was tatsächlich wirkt</dt><dd>Der Wunsch nach Nähe zu Schlüsselfiguren, deren Verfügbarkeit sich durch Wachstum faktisch verringert hat. Was als Kommunikationsdefizit erscheint, ist ein unausgesprochenes Bedürfnis nach Zuwendung.</dd></div>
+      <div class="r"><dt>Warum die Maßnahme verpufft</dt><dd>Ein zusätzlicher Kanal transportiert mehr Information, aber keine Nähe. Die Forderung wiederholt sich deshalb nach kurzer Zeit unverändert, nun mit dem Zusatz, dass ja schon so viel probiert wurde.</dd></div>
+    </dl>
+  </article>
+
+  <article class="case">
+    <h3>2. Der Rückfall in Kontrolle</h3>
+    <dl>
+      <div class="r"><dt>Was beobachtet wird</dt><dd>Das mittlere Management führt in ruhigen Phasen partizipativ, greift unter Termindruck aber unvermittelt auf einen kontrollbetonten Stil zurück. Jüngere Mitarbeitende reagieren mit Rückzug.</dd></div>
+      <div class="r"><dt>Was naheliegt</dt><dd>Ein Führungskräfteprogramm zu moderner, partizipativer Führung.</dd></div>
+      <div class="r key"><dt>Was tatsächlich wirkt</dt><dd>Ein ungelöster Konflikt um Kontrolle in der Organisationsgeschichte, der unter Unsicherheit reaktiviert wird. Die Führungskräfte wissen, wie moderne Führung geht, sie können es unter Druck nicht abrufen.</dd></div>
+      <div class="r"><dt>Warum die Maßnahme verpufft</dt><dd>Das Programm vermittelt eine Kompetenz, die bereits vorhanden ist. Es adressiert nicht die Unsicherheit, die den Rückfall auslöst. Nach dem Training verhalten sich alle drei Wochen anders und danach wieder wie zuvor.</dd></div>
+    </dl>
+  </article>
+
+  <article class="case">
+    <h3>3. Der Widerstand gegen ein neues System</h3>
+    <dl>
+      <div class="r"><dt>Was beobachtet wird</dt><dd>Die Einführung digitaler Verfahren stößt in den fachlich stärksten Abteilungen auf den größten Widerstand. Die Argumente wechseln, der Widerstand bleibt.</dd></div>
+      <div class="r"><dt>Was naheliegt</dt><dd>Anwenderschulungen, Change-Kommunikation, Key-User-Programme.</dd></div>
+      <div class="r key"><dt>Was tatsächlich wirkt</dt><dd>Schwierigkeiten, Überforderung offen zu kommunizieren. Situationen mit erlebtem Kontrollverlust werden als bedrohlich erfahren, ambivalente Gefühle lassen sich schwer ausdrücken.</dd></div>
+      <div class="r"><dt>Warum die Maßnahme verpufft</dt><dd>Die Schulung beantwortet eine Frage, die niemand gestellt hat. Wer sich überfordert fühlt, es aber nicht sagen kann, wird durch zusätzliche Schulungsangebote nicht entlastet, sondern bestätigt.</dd></div>
+    </dl>
+  </article>
+
+  <article class="case">
+    <h3>4. Die forcierte Umstrukturierung</h3>
+    <dl>
+      <div class="r"><dt>Was beobachtet wird</dt><dd>Zwischen zwei Bereichen kommt es seit Jahren zu Reibungen. Zuständigkeiten werden bestritten, Vorgänge bleiben liegen, jede Seite hält die andere für das Problem.</dd></div>
+      <div class="r"><dt>Was naheliegt</dt><dd>Ein neuer Zuschnitt der Organisation: Bereiche werden zusammengelegt, Schnittstellen neu definiert, Berichtswege geändert.</dd></div>
+      <div class="r key"><dt>Was tatsächlich wirkt</dt><dd>Ein ungeklärter Konflikt darüber, wer in dieser Organisation etwas zu sagen hat. Die Reibung liegt nicht an der Aufbauorganisation, sondern daran, dass diese Frage nie entschieden wurde.</dd></div>
+      <div class="r"><dt>Warum die Maßnahme verpufft</dt><dd>Nach der Umstrukturierung entstehen dieselben Reibungen an den neuen Schnittstellen, meist innerhalb eines Jahres. Weil das Organigramm nun ein anderes ist, wirkt es wie ein neues Problem und legt die nächste Umstrukturierung nahe.</dd></div>
+    </dl>
+  </article>
+
+  <article class="case">
+    <h3>5. Der Führungswechsel</h3>
+    <dl>
+      <div class="r"><dt>Was beobachtet wird</dt><dd>Ein Bereich kommt seit Längerem nicht in Tritt. Ziele werden verfehlt, die Stimmung ist gedrückt, Rückmeldungen aus dem Bereich bleiben widersprüchlich.</dd></div>
+      <div class="r"><dt>Was naheliegt</dt><dd>Ein Wechsel an der Spitze: Die Bereichsleitung wird neu besetzt, möglichst mit jemandem, der frischen Wind bringt.</dd></div>
+      <div class="r key"><dt>Was tatsächlich wirkt</dt><dd>Eine Rolle, die so zugeschnitten ist, dass sie kaum auszufüllen ist: widersprüchliche Aufträge von oben, fehlende Entscheidungsbefugnis, Loyalitätserwartungen aus zwei Richtungen. Die Schwierigkeit liegt in der Position, nicht in der Person.</dd></div>
+      <div class="r"><dt>Warum die Maßnahme verpufft</dt><dd>Die neue Führungskraft startet mit Rückenwind und gerät nach einigen Monaten in dieselbe Lage wie ihre Vorgängerin. Weil der Wechsel als Lösung galt, erscheint das Scheitern erneut als persönliches Versagen, und der nächste Wechsel liegt nahe.</dd></div>
+    </dl>
+  </article>
+
+  <article class="case">
+    <h3>6. Die vertagte Entscheidung</h3>
+    <dl>
+      <div class="r"><dt>Was beobachtet wird</dt><dd>Entscheidungen werden vorbereitet, diskutiert und dann erneut vertagt. Das wiederholt sich über Monate.</dd></div>
+      <div class="r"><dt>Was naheliegt</dt><dd>Klarere Entscheidungsprozesse, ein zusätzliches Gremium, eine Eskalationsregel.</dd></div>
+      <div class="r key"><dt>Was tatsächlich wirkt</dt><dd>Konfliktvermeidung und ein verdeckter Machtkonflikt. Die Vertagung ist keine Schwäche des Verfahrens, sondern seine Funktion: Sie hält den Konflikt aus dem Raum.</dd></div>
+      <div class="r"><dt>Warum die Maßnahme verpufft</dt><dd>Ein zusätzliches Gremium liefert einen weiteren Ort, an dem vertagt werden kann. Der Lösungsversuch wird Teil des Problems: mehr desselben.</dd></div>
+    </dl>
+  </article>
+
+  <p>Alle sechs Beispiele sind Impulse, mit denen Organisationen auf Belastung reagieren, manche schnell wie der neue Kommunikationskanal, andere träger wie eine Umstrukturierung. Und fast durchweg war die gewählte Maßnahme fachlich in Ordnung. Sie hätte gewirkt, nur bei einem anderen Problem. Genau das macht diese Fehlzuordnungen so schwer erkennbar: Man sieht einer Maßnahme eben nicht an, dass sie am falschen Ort ansetzt. Bleibt die Wirkung aus, liegt der Schluss nahe, es habe an der Umsetzung gelegen, und es folgt die nächste Maßnahme derselben Art.</p>
+  <p>Bleibt die Frage, wie Sie das im eigenen Haus erkennen. Wie wahrscheinlich ist es, dass bei Ihnen etwas mitwirkt, das von innen schwer zu sehen ist? Dafür ist der folgende Bogen gedacht.</p>
+</section>
+
+<section class="part" id="teil3">
+  <h2>Teil 3: Das Screening</h2>
+  <p>Die naheliegende Frage nach der Lektüre lautet: Wie steht es um uns? Diese Frage beantwortet ein Fragebogen nicht. Dafür braucht es Interviews auf mehreren Ebenen und eine Auswertung nach einem festen Schema, so wie in der Medizin ein Fragebogen keine Diagnose ersetzt.</p>
+  <p>Was ein Fragebogen leisten kann, ist der Schritt davor: einzuschätzen, ob eine genauere Betrachtung überhaupt angezeigt ist. Das ist die Aufgabe dieses Screenings. Es beschreibt ausschließlich Beobachtungen, keine Deutungen. Sie müssen nichts interpretieren, sondern nur einschätzen, ob eine Aussage auf Ihre Organisation zutrifft.</p>
+  <p>Die Aussagen sind keine freie Sammlung. Sie sind aus dem SyMOA-Rahmen abgeleitet, der einem klinisch etablierten diagnostischen System folgt. Aus demselben Rahmen haben wir einen Fragebogen zur Erfassung organisationaler Funktionsfähigkeit entwickelt: aus 156 theoriebasierten Items, geprüft von Experten für psychodynamische Diagnostik und validiert an über 800 Personen.</p>
+
   <div class="notice">
     <p><strong>Was dieses Screening ist und was nicht</strong></p>
     <p>Es ist ein Einstieg, kein Befund. Der Bogen ist nicht validiert, er liefert keine Kennwerte und keine Diagnose. Was er kann: Beobachtungen ordnen, die Ihnen einzeln vielleicht schon aufgefallen sind, und Ihnen eine Einschätzung geben, ob genaueres Hinsehen lohnt. Nehmen Sie das Ergebnis als Anstoß zum Nachdenken und, wenn es deutlich ausfällt, als Anlass für eine fundierte Organisationsdiagnostik.</p>
   </div>
-</section>
+  <div class="notice">
+    <p><strong>Datenschutz</strong></p>
+    <p>Ihre Antworten werden weder gespeichert noch übertragen. Die Auswertung geschieht direkt in Ihrem Browser und verschwindet, sobald Sie die Seite schließen.</p>
+  </div>
 
-<section id="quiz" hidden>
-  <button class="back" id="back">Zurück zur Übersicht</button>
-  <h2 id="qtitle"></h2>
-  <p class="lead" id="qintro"></p>
-  <p class="tip" id="qtip"></p>
+  <h3>So gehen Sie vor</h3>
+  <p>Denken Sie an einen konkreten Bereich: Ihre Organisation, Ihren Verantwortungsbereich oder ein bestimmtes Thema, das Sie beschäftigt. Beantworten Sie alle 23 Aussagen aus dieser Perspektive. Rechnen Sie mit etwa zehn Minuten.</p>
+  <p class="tip">Ein Vorschlag, der den Ertrag deutlich erhöht: Bitten Sie eine zweite Person aus Ihrer Organisation, den Bogen unabhängig auszufüllen, und vergleichen Sie anschließend. Wo Ihre Einschätzungen auseinandergehen, liegt in aller Regel der aufschlussreichere Befund, und Sie erleben im Kleinen, was eine Diagnostik mit vielen Perspektiven systematisch tut.</p>
+
   <div class="progress" aria-hidden="true"><div id="bar"></div></div>
   <div class="count" id="count" aria-live="polite"></div>
   <form id="form" onsubmit="return false"></form>
-  <div class="row"><button class="btn" id="submit" disabled>Auswertung anzeigen</button></div>
-</section>
-
-<section id="result" hidden>
-  <button class="back" id="back2">Zurück zur Übersicht</button>
-  <h2 id="rtitle"></h2>
-  <p class="lead">Anzahl der Aussagen, bei denen Sie „eher ja“ oder „ja“ gewählt haben.</p>
-  <div class="score"><b id="rscore"></b><span id="rmax"></span></div>
-  <div class="scale-wrap">
-    <div class="scale" id="scale"></div>
-    <div class="pin" id="pin"></div>
-  </div>
-  <div class="ticks"><span id="tmin"></span><span id="tmax"></span></div>
-  <div class="band"><h3 id="rband"></h3><p id="rtext"></p></div>
-
-  <div class="fields">
-    <h3>Wo Ihre Kreuze stehen, sagt mehr als wie viele es sind</h3>
-    <p class="lead">Verteilung Ihrer „eher ja“ und „ja“ auf die fünf Felder.</p>
-    <div id="fieldrows"></div>
-    <div class="band" id="patterns"></div>
-  </div>
-
-  <p class="fine">Das ist eine erste Einschätzung, kein Befund. Sie soll Ihr Nachdenken anstoßen, nicht es beenden. Diese Auswertung wurde nicht gespeichert.</p>
-
-  <div class="more">
-    <h3>Wenn eine genauere Betrachtung sinnvoll ist</h3>
-    <p>Solche Muster sind aus der Organisation heraus schwer zu erkennen, weil alle Beteiligten Teil davon sind. Das ist der blinde Fleck: kein Wissensdefizit, sondern eine Eigenschaft der Perspektive. Für diese Fälle wurde SyMOA entwickelt, das Systematische Multidimensionale Organisationale Assessment.</p>
-    <ul>
-      <li>Der Prozess von der Erstberatung bis zum Bericht dauert in der Regel vier bis sechs Wochen.</li>
-      <li>Eingebunden sind ausgewählte Mitarbeitende über ein bis zwei Wochen, mit jeweils etwa einstündigen Interviews.</li>
-      <li>Ergebnis ist ein schriftlicher Bericht entlang dreier Dimensionen, mit Zusammenfassung und konkreten Handlungsempfehlungen.</li>
-    </ul>
-    <p>Mehr unter <a href="https://www.symoa.de" target="_blank" rel="noopener">www.symoa.de</a> oder per E-Mail an <a href="mailto:info@symoa.de">info@symoa.de</a>.</p>
-  </div>
-
   <div class="row">
-    <button class="btn" id="again">Noch einmal ausfüllen</button>
-    <button class="btn ghost" id="home2">Zur Übersicht</button>
+    <button class="btn" id="submit" disabled>Auswertung anzeigen</button>
+    <span class="count" id="count2" style="margin:0"></span>
   </div>
 </section>
+
+<section class="part" id="teil4">
+  <h2>Teil 4: Auswertung</h2>
+  <p>Gezählt wird, wie oft Sie „eher ja“ oder „ja“ angekreuzt haben, und auf welche Felder sich diese Antworten verteilen. Beides zusammen ergibt das Bild. Und noch einmal zur Einordnung: Das ist eine erste Einschätzung, kein Befund. Sie soll Ihr Nachdenken anstoßen, nicht es beenden.</p>
+
+  <div class="personal" id="personal" hidden>
+    <h3>Ihr Ergebnis</h3>
+    <p class="lead" style="margin-bottom:.25rem">Anzahl der Aussagen, bei denen Sie „eher ja“ oder „ja“ gewählt haben.</p>
+    <div class="score"><b id="rscore"></b><span id="rmax"></span></div>
+    <div class="scale-wrap">
+      <div class="scale" id="scale"></div>
+      <div class="pin" id="pin"></div>
+    </div>
+    <div class="ticks"><span id="tmin"></span><span id="tmax"></span></div>
+    <div class="fieldrows" id="fieldrows"></div>
+    <div class="row">
+      <button class="btn" id="again">Noch einmal ausfüllen</button>
+    </div>
+    <p class="fine">Diese Auswertung wurde nicht gespeichert.</p>
+  </div>
+
+  <ul class="bandlist" id="bandlist"></ul>
+
+  <h3>Wo Ihre Kreuze stehen, sagt mehr als wie viele es sind</h3>
+  <p>Drei Verteilungen lohnen einen zweiten Blick, unabhängig davon, wie hoch Ihre Gesamtzahl ausgefallen ist.</p>
+  <ul class="patlist" id="patlist"></ul>
+</section>
+
+<section class="part more" id="teil5">
+  <h2>Teil 5: Wenn eine genauere Betrachtung sinnvoll ist</h2>
+  <p>Solche Muster sind aus der Organisation heraus schwer zu erkennen. Woran liegt das? Nicht an fehlender Kompetenz: Sie bestehen fort, weil alle Beteiligten Teil des Musters sind. Das ist der blinde Fleck, kein Wissensdefizit, sondern eine Eigenschaft der Perspektive.</p>
+  <p>Für diese Fälle haben wir SyMOA entwickelt, das Systematische Multidimensionale Organisationale Assessment. Es überträgt einen klinisch etablierten diagnostischen Rahmen auf Organisationen und untersucht drei Dimensionen: die aktuellen Herausforderungen vor dem Hintergrund des inneren Funktionsniveaus, die internen Beziehungsdynamiken und die unbewussten organisationalen Konflikte. Sie kennen diese drei Ebenen aus dem Buch.</p>
+  <h3>Was das praktisch bedeutet</h3>
+  <ul>
+    <li>Der Prozess von der Erstberatung bis zum Bericht dauert in der Regel vier bis sechs Wochen.</li>
+    <li>Eingebunden sind ausgewählte Mitarbeitende über ein bis zwei Wochen, mit jeweils etwa einstündigen Interviews.</li>
+    <li>Ergebnis ist ein schriftlicher Bericht entlang der drei Dimensionen, mit einer Zusammenfassung und konkreten Handlungsempfehlungen.</li>
+  </ul>
+  <p>Ein Musterbericht und ein ausführliches White Paper stehen frei zur Verfügung. Wenn Sie sehen möchten, wie ein solcher Befund aussieht, bevor Sie mit uns sprechen, ist das der sinnvollste nächste Schritt.</p>
+  <p>Mehr unter <a href="https://www.symoa.de" target="_blank" rel="noopener">www.symoa.de</a> oder per E-Mail an <a href="mailto:info@symoa.de">info@symoa.de</a>.</p>
+</section>
+
+<section class="part" id="quellen">
+  <h2>Quellen</h2>
+  <ul class="refs">
+    <li>Blume, B. D., Ford, J. K., Baldwin, T. T., &amp; Huang, J. L. (2010). Transfer of training: A meta-analytic review. <i>Journal of Management, 36</i>(4), 1065 bis 1105. <a href="https://doi.org/10.1177/0149206309352880" target="_blank" rel="noopener">https://doi.org/10.1177/0149206309352880</a></li>
+    <li>Hammer, M., &amp; Champy, J. (1993). <i>Reengineering the corporation: A manifesto for business revolution.</i> HarperBusiness.</li>
+    <li>Hammer, M., &amp; Stanton, S. A. (1995). <i>The reengineering revolution: A handbook.</i> HarperBusiness.</li>
+    <li>Hughes, M. (2011). Do 70 per cent of all organizational change initiatives really fail? <i>Journal of Change Management, 11</i>(4), 451 bis 464. <a href="https://doi.org/10.1080/14697017.2011.630506" target="_blank" rel="noopener">https://doi.org/10.1080/14697017.2011.630506</a></li>
+    <li>Kotter, J. P. (1995). Leading change: Why transformation efforts fail. <i>Harvard Business Review, 73</i>(2), 59 bis 67.</li>
+    <li>Kotter, J. P. (2008). <i>A sense of urgency.</i> Harvard Business Press.</li>
+    <li>Lacerenza, C. N., Reyes, D. L., Marlow, S. L., Joseph, D. L., &amp; Salas, E. (2017). Leadership training design, delivery, and implementation: A meta-analysis. <i>Journal of Applied Psychology, 102</i>(12), 1686 bis 1718. <a href="https://doi.org/10.1037/apl0000241" target="_blank" rel="noopener">https://doi.org/10.1037/apl0000241</a></li>
+    <li>Nutt, P. C. (1999). Surprising but true: Half the decisions in organizations fail. <i>Academy of Management Executive, 13</i>(4), 75 bis 90. <a href="https://doi.org/10.5465/ame.1999.2570556" target="_blank" rel="noopener">https://doi.org/10.5465/ame.1999.2570556</a></li>
+    <li>Theeboom, T., Beersma, B., &amp; van Vianen, A. E. M. (2014). Does coaching work? A meta-analysis on the effects of coaching on individual level outcomes in an organizational context. <i>The Journal of Positive Psychology, 9</i>(1), 1 bis 18. <a href="https://doi.org/10.1080/17439760.2013.837499" target="_blank" rel="noopener">https://doi.org/10.1080/17439760.2013.837499</a></li>
+    <li>Watzlawick, P., Weakland, J. H., &amp; Fisch, R. (1974). <i>Change: Principles of problem formation and problem resolution.</i> Norton.</li>
+  </ul>
+</section>
+
+<footer>SyMOA, Universität Freiburg, <a href="https://www.symoa.de" target="_blank" rel="noopener">www.symoa.de</a>, <a href="mailto:info@symoa.de">info@symoa.de</a></footer>
 
 </main>
 
 <script>
-/* ------------------------------------------------------------
-   Inhalte. Weitere Fragebögen lassen sich als zusätzliche Einträge
-   in QUESTIONNAIRES ergänzen.
-   Gewertet wird je Aussage 1 Punkt bei "eher ja" oder "ja".
------------------------------------------------------------- */
-var QUESTIONNAIRES = [
-  {
-    id: "screening",
-    title: "Screening: Wirkt bei uns etwas im Verborgenen mit?",
-    desc: "23 Aussagen in fünf Feldern. Dauer etwa zehn Minuten.",
-    intro: "Denken Sie an einen konkreten Bereich: Ihre Organisation, Ihren Verantwortungsbereich oder ein bestimmtes Thema, das Sie beschäftigt. Beantworten Sie alle 23 Aussagen aus dieser Perspektive. Die Aussagen beschreiben ausschließlich Beobachtungen. Sie müssen nichts interpretieren, sondern nur einschätzen, ob eine Aussage auf Ihre Organisation zutrifft.",
-    tip: "Ein Vorschlag, der den Ertrag deutlich erhöht: Bitten Sie eine zweite Person aus Ihrer Organisation, den Bogen unabhängig auszufüllen, und vergleichen Sie anschließend. Wo Ihre Einschätzungen auseinandergehen, liegt in aller Regel der aufschlussreichere Befund.",
-    options: [
-      { label: "nein", point: 0 },
-      { label: "eher nein", point: 0 },
-      { label: "eher ja", point: 1 },
-      { label: "ja", point: 1 }
-    ],
-    groups: [
-      { key: "A", title: "Wiederholung", items: [
-        "Themen, die wir bereits gezielt bearbeitet haben, beschäftigen uns nach einiger Zeit immer wieder erneut.",
-        "Für manche Probleme haben wir bereits mehrere Lösungsversuche unternommen, ohne dass sich grundlegend etwas verändert hat.",
-        "Nach Veränderungsinitiativen schleichen sich mit der Zeit frühere Arbeitsweisen wieder ein.",
-        "Bestimmte Diskussionen führen wir immer wieder, ohne erkennbar weiterzukommen.",
-        "Es kommt vor, dass getroffene Entscheidungen im Arbeitsalltag faktisch nicht umgesetzt werden."
-      ]},
-      { key: "B", title: "Unausgesprochenes", items: [
-        "Manche wichtige Themen werden eher informell besprochen als in den dafür vorgesehenen Runden.",
-        "Entscheidende Klärungen finden bei uns häufig außerhalb der offiziellen Besprechungen statt.",
-        "Kritische Einwände gegenüber Entscheidungen werden selten direkt an der Stelle geäußert, wo sie geklärt werden können.",
-        "Es gibt immer wieder Situationen, in denen Überforderung spürbar ist, aber kaum offen angesprochen wird.",
-        "Wenn Fehler passieren, fällt es uns schwer, offen darüber zu sprechen, was dazu beigetragen hat."
-      ]},
-      { key: "C", title: "Reibung ohne Sachgrund", items: [
-        "In Besprechungen entsteht Spannung, die sich alleine durch das Sachthema nur schwer erklären lässt.",
-        "Zwischen bestimmten Bereichen ist die Zusammenarbeit dauerhaft schwierig, unabhängig davon, wer dort arbeitet.",
-        "Auch personelle Veränderungen auf Schlüsselpositionen haben Schwierigkeiten in der Zusammenarbeit wenig geändert.",
-        "Unter Druck verschärft sich der Umgangston merklich.",
-        "Manche Abstimmungen kosten auffällig mehr Zeit und Energie, als es die Sachlage erwarten ließe."
-      ]},
-      { key: "D", title: "Erklärungslücke", items: [
-        "Bei manchen wiederkehrenden Problemen wissen wir nicht recht, warum sie trotz unserer Lösungsversuche bestehen bleiben.",
-        "Die Erklärungen bei anhaltenden Problemen liegen überwiegend außerhalb der Organisation: der Markt, die Generation, die Umstände.",
-        "Würden drei Personen aus verschiedenen Ebenen das gleiche Problem beschreiben, kämen drei verschiedene Beschreibungen dabei heraus.",
-        "Es kommt häufiger vor, dass Rückmeldungen von außen nicht zu unserem Selbstbild passen.",
-        "Es ist unklar, woran wir erkennen würden, dass das Problem gelöst ist. Bei manchen Problemen ist es schwer zu erkennen, ob sich wirklich etwas verbessert hat."
-      ]},
-      { key: "E", title: "Sichtbare Kosten", items: [
-        "In einzelnen Bereichen liegt die Fluktuation deutlich über dem, was wir erwarten würden.",
-        "Es gibt Bereiche mit auffällig hohem oder ungleich verteiltem Krankenstand.",
-        "Trotz gezielter Gegenmaßnahmen bleiben manche wichtigen Ergebnisse hinter den Erwartungen zurück."
-      ]}
-    ],
-    bands: [
-      { max: 6,  label: "Wenige Hinweise", text: "Was Sie beschäftigt, ist mit hoher Wahrscheinlichkeit dort zu lösen, wo es auftritt. Prüfen Sie vor der nächsten Initiative lediglich, ob die direkte Führungsebene ihre Umsetzung tatsächlich unterstützt und ob es Gelegenheit gibt, das Erlernte anzuwenden. Das sind zwei Bedingungen, die für die Wirkung nachweislich entscheidend sind." },
-      { max: 14, label: "Hinweise in einzelnen Feldern", text: "Schauen Sie, wo sich Ihre Antworten häufen, und klären Sie dieses Feld gezielt, bevor Sie ein größeres Vorhaben beauftragen. In dieser Zone entscheidet sich häufig, ob die nächste Investition wirkt oder verpufft." },
-      { max: 23, label: "Viele Hinweise über mehrere Felder hinweg", text: "In dieser Konstellation löst sich das Muster erfahrungsgemäß nicht dadurch auf, dass man es von innen genauer betrachtet, denn dafür sind alle Beteiligten zu sehr Teil davon. Hier ist ein Blick von außen der wirtschaftlichere Weg, weil er die nächste Fehlinvestition verhindern kann." }
-    ],
-    /* Verteilungsmuster. "viele" bedeutet mindestens 3 von 5 Aussagen
-       (Feld E: mindestens 2 von 3), "wenige" höchstens 1 je Feld. */
-    patterns: [
-      { test: function (c) { return c.A >= 3 && c.D >= 3; },
-        title: "Viele Kreuze in A und D",
-        text: "Das Problem kehrt wieder, und niemand kann erklären, warum. Erfahrungsgemäß ändert eine weitere Maßnahme derselben Art daran nichts." },
-      { test: function (c) { return c.B >= 3 && c.A <= 1 && c.C <= 1 && c.D <= 1 && c.E <= 1; },
-        title: "Viele Kreuze in B, wenige sonst",
-        text: "Vieles ist bekannt, aber es fehlt der Ort, an dem es gesagt werden kann. Das lässt sich oft mit einfachen Mitteln ändern, vorausgesetzt, dieser Ort wird verlässlich eingerichtet und fällt nicht beim ersten Termindruck aus." },
-      { test: function (c) { return c.E >= 2 && c.A <= 1 && c.B <= 1 && c.C <= 1 && c.D <= 1; },
-        title: "Viele Kreuze in E, wenige in A bis D",
-        text: "Die Kosten sind sichtbar, die Ursache liegt aber vermutlich nicht im Verborgenen. Hier lohnt zuerst der sachliche Blick auf Arbeitsbelastung, Vergütung, Führungsspanne und Arbeitsbedingungen." }
-    ]
-  }
-];
+var Q = {
+  options: [
+    { label: "nein", point: 0 },
+    { label: "eher nein", point: 0 },
+    { label: "eher ja", point: 1 },
+    { label: "ja", point: 1 }
+  ],
+  groups: [
+    { key: "A", title: "Wiederholung", items: [
+      "Themen, die wir bereits gezielt bearbeitet haben, beschäftigen uns nach einiger Zeit immer wieder erneut.",
+      "Für manche Probleme haben wir bereits mehrere Lösungsversuche unternommen, ohne dass sich grundlegend etwas verändert hat.",
+      "Nach Veränderungsinitiativen schleichen sich mit der Zeit frühere Arbeitsweisen wieder ein.",
+      "Bestimmte Diskussionen führen wir immer wieder, ohne erkennbar weiterzukommen.",
+      "Es kommt vor, dass getroffene Entscheidungen im Arbeitsalltag faktisch nicht umgesetzt werden."
+    ]},
+    { key: "B", title: "Unausgesprochenes", items: [
+      "Manche wichtige Themen werden eher informell besprochen als in den dafür vorgesehenen Runden.",
+      "Entscheidende Klärungen finden bei uns häufig außerhalb der offiziellen Besprechungen statt.",
+      "Kritische Einwände gegenüber Entscheidungen werden selten direkt an der Stelle geäußert, wo sie geklärt werden können.",
+      "Es gibt immer wieder Situationen, in denen Überforderung spürbar ist, aber kaum offen angesprochen wird.",
+      "Wenn Fehler passieren, fällt es uns schwer, offen darüber zu sprechen, was dazu beigetragen hat."
+    ]},
+    { key: "C", title: "Reibung ohne Sachgrund", items: [
+      "In Besprechungen entsteht Spannung, die sich alleine durch das Sachthema nur schwer erklären lässt.",
+      "Zwischen bestimmten Bereichen ist die Zusammenarbeit dauerhaft schwierig, unabhängig davon, wer dort arbeitet.",
+      "Auch personelle Veränderungen auf Schlüsselpositionen haben Schwierigkeiten in der Zusammenarbeit wenig geändert.",
+      "Unter Druck verschärft sich der Umgangston merklich.",
+      "Manche Abstimmungen kosten auffällig mehr Zeit und Energie, als es die Sachlage erwarten ließe."
+    ]},
+    { key: "D", title: "Erklärungslücke", items: [
+      "Bei manchen wiederkehrenden Problemen wissen wir nicht recht, warum sie trotz unserer Lösungsversuche bestehen bleiben.",
+      "Die Erklärungen bei anhaltenden Problemen liegen überwiegend außerhalb der Organisation: der Markt, die Generation, die Umstände.",
+      "Würden drei Personen aus verschiedenen Ebenen das gleiche Problem beschreiben, kämen drei verschiedene Beschreibungen dabei heraus.",
+      "Es kommt häufiger vor, dass Rückmeldungen von außen nicht zu unserem Selbstbild passen.",
+      "Es ist unklar, woran wir erkennen würden, dass das Problem gelöst ist. Bei manchen Problemen ist es schwer zu erkennen, ob sich wirklich etwas verbessert hat."
+    ]},
+    { key: "E", title: "Sichtbare Kosten", items: [
+      "In einzelnen Bereichen liegt die Fluktuation deutlich über dem, was wir erwarten würden.",
+      "Es gibt Bereiche mit auffällig hohem oder ungleich verteiltem Krankenstand.",
+      "Trotz gezielter Gegenmaßnahmen bleiben manche wichtigen Ergebnisse hinter den Erwartungen zurück."
+    ]}
+  ],
+  bands: [
+    { from: 0,  max: 6,  label: "Wenige Hinweise", text: "Was Sie beschäftigt, ist mit hoher Wahrscheinlichkeit dort zu lösen, wo es auftritt. Prüfen Sie vor der nächsten Initiative lediglich, ob die direkte Führungsebene ihre Umsetzung tatsächlich unterstützt und ob es Gelegenheit gibt, das Erlernte anzuwenden. Das sind zwei Bedingungen, die für die Wirkung nachweislich entscheidend sind." },
+    { from: 7,  max: 14, label: "Hinweise in einzelnen Feldern", text: "Schauen Sie, wo sich Ihre Antworten häufen, und klären Sie dieses Feld gezielt, bevor Sie ein größeres Vorhaben beauftragen. In dieser Zone entscheidet sich häufig, ob die nächste Investition wirkt oder verpufft." },
+    { from: 15, max: 23, label: "Viele Hinweise über mehrere Felder hinweg", text: "In dieser Konstellation löst sich das Muster erfahrungsgemäß nicht dadurch auf, dass man es von innen genauer betrachtet, denn dafür sind alle Beteiligten zu sehr Teil davon. Hier ist ein Blick von außen der wirtschaftlichere Weg, weil er die nächste Fehlinvestition verhindern kann." }
+  ],
+  /* "viele" bedeutet mindestens 3 von 5 Aussagen (Feld E: mindestens 2 von 3),
+     "wenige" höchstens 1 je Feld. */
+  patterns: [
+    { test: function (c) { return c.A >= 3 && c.D >= 3; },
+      title: "Viele Kreuze in A und D",
+      text: "Das Problem kehrt wieder, und niemand kann erklären, warum. Erfahrungsgemäß ändert eine weitere Maßnahme derselben Art daran nichts." },
+    { test: function (c) { return c.B >= 3 && c.A <= 1 && c.C <= 1 && c.D <= 1 && c.E <= 1; },
+      title: "Viele Kreuze in B, wenige sonst",
+      text: "Vieles ist bekannt, aber es fehlt der Ort, an dem es gesagt werden kann. Das lässt sich oft mit einfachen Mitteln ändern, vorausgesetzt, dieser Ort wird verlässlich eingerichtet und fällt nicht beim ersten Termindruck aus." },
+    { test: function (c) { return c.E >= 2 && c.A <= 1 && c.B <= 1 && c.C <= 1 && c.D <= 1; },
+      title: "Viele Kreuze in E, wenige in A bis D",
+      text: "Die Kosten sind sichtbar, die Ursache liegt aber vermutlich nicht im Verborgenen. Hier lohnt zuerst der sachliche Blick auf Arbeitsbelastung, Vergütung, Führungsspanne und Arbeitsbedingungen." }
+  ]
+};
 
-var current = null;
 var flat = [];
 var answers = {};
 var $ = function (id) { return document.getElementById(id); };
 
-function show(which) {
-  ["home", "quiz", "result"].forEach(function (s) { $(s).hidden = (s !== which); });
-  window.scrollTo(0, 0);
+function total() {
+  return Q.groups.reduce(function (n, g) { return n + g.items.length; }, 0);
 }
 
-function total(q) {
-  return q.groups.reduce(function (n, g) { return n + g.items.length; }, 0);
-}
-
-function renderList() {
-  var ul = $("list");
-  ul.innerHTML = "";
-  QUESTIONNAIRES.forEach(function (q) {
+function renderStatic() {
+  var bl = $("bandlist");
+  Q.bands.forEach(function (b, i) {
     var li = document.createElement("li");
-    var b = document.createElement("button");
-    b.className = "pick";
-    b.type = "button";
-    b.innerHTML = "<strong></strong><span></span><small></small>";
-    b.querySelector("strong").textContent = q.title;
-    b.querySelector("span").textContent = q.desc;
-    b.querySelector("small").textContent = "Screening starten";
-    b.addEventListener("click", function () { start(q); });
-    li.appendChild(b);
-    ul.appendChild(li);
+    li.id = "band" + i;
+    var rg = document.createElement("div");
+    rg.className = "rg";
+    rg.textContent = b.from + " bis " + b.max;
+    var bt = document.createElement("div");
+    bt.className = "bt";
+    var st = document.createElement("strong");
+    st.textContent = b.label;
+    var p = document.createElement("p");
+    p.textContent = b.text;
+    var bd = document.createElement("div");
+    bd.className = "badge";
+    bd.textContent = "Ihr Bereich";
+    bt.appendChild(st);
+    bt.appendChild(p);
+    bt.appendChild(bd);
+    li.appendChild(rg);
+    li.appendChild(bt);
+    bl.appendChild(li);
+  });
+  var pl = $("patlist");
+  Q.patterns.forEach(function (pt, i) {
+    var li = document.createElement("li");
+    li.id = "pat" + i;
+    var st = document.createElement("strong");
+    st.textContent = pt.title;
+    var p = document.createElement("p");
+    p.textContent = pt.text;
+    var bd = document.createElement("div");
+    bd.className = "badge";
+    bd.textContent = "Trifft auf Ihre Antworten zu";
+    li.appendChild(st);
+    li.appendChild(p);
+    li.appendChild(bd);
+    pl.appendChild(li);
   });
 }
 
-function start(q) {
-  current = q;
+function buildForm() {
   answers = {};
   flat = [];
-  $("qtitle").textContent = q.title;
-  $("qintro").textContent = q.intro || "";
-  $("qtip").textContent = q.tip || "";
   var form = $("form");
   form.innerHTML = "";
   var n = 0;
-  q.groups.forEach(function (g, gi) {
+  Q.groups.forEach(function (g, gi) {
     var head = document.createElement("div");
     head.className = "field-head";
     var h = document.createElement("h3");
@@ -292,18 +479,18 @@ function start(q) {
     g.items.forEach(function (text) {
       var i = n++;
       flat.push({ g: gi });
-      var fs = document.createElement("div");
-      fs.className = "item";
-      fs.setAttribute("role", "radiogroup");
-      fs.setAttribute("aria-labelledby", "qt" + i);
+      var box = document.createElement("div");
+      box.className = "item";
+      box.setAttribute("role", "radiogroup");
+      box.setAttribute("aria-labelledby", "qt" + i);
       var lg = document.createElement("p");
       lg.className = "qtext";
       lg.id = "qt" + i;
       lg.textContent = (i + 1) + ". " + text;
-      fs.appendChild(lg);
-      var box = document.createElement("div");
-      box.className = "opts";
-      q.options.forEach(function (o, k) {
+      box.appendChild(lg);
+      var opts = document.createElement("div");
+      opts.className = "opts";
+      Q.options.forEach(function (o, k) {
         var lab = document.createElement("label");
         lab.className = "opt";
         var inp = document.createElement("input");
@@ -315,51 +502,52 @@ function start(q) {
         sp.textContent = o.label;
         lab.appendChild(inp);
         lab.appendChild(sp);
-        box.appendChild(lab);
+        opts.appendChild(lab);
       });
-      fs.appendChild(box);
-      form.appendChild(fs);
+      box.appendChild(opts);
+      form.appendChild(box);
     });
   });
   update();
-  show("quiz");
 }
 
 function update() {
-  var n = Object.keys(answers).length, t = total(current);
+  var n = Object.keys(answers).length, t = total();
+  var txt = n + " von " + t + " Aussagen beantwortet";
   $("bar").style.width = (n / t * 100) + "%";
-  $("count").textContent = n + " von " + t + " Aussagen beantwortet";
+  $("count").textContent = txt;
+  $("count2").textContent = n < t ? txt : "";
   $("submit").disabled = n < t;
 }
 
+function clearMarks() {
+  Array.prototype.forEach.call(document.querySelectorAll("li.active"), function (el) { el.classList.remove("active"); });
+}
+
 function evaluate() {
-  var q = current, t = total(q), sum = 0;
-  var counts = {};
-  q.groups.forEach(function (g) { counts[g.key] = 0; });
+  var t = total(), sum = 0, counts = {};
+  Q.groups.forEach(function (g) { counts[g.key] = 0; });
   flat.forEach(function (f, i) {
-    var p = q.options[answers[i]].point;
+    var p = Q.options[answers[i]].point;
     sum += p;
-    counts[q.groups[f.g].key] += p;
+    counts[Q.groups[f.g].key] += p;
   });
 
-  var band = q.bands[q.bands.length - 1];
-  for (var i = 0; i < q.bands.length; i++) {
-    if (sum <= q.bands[i].max) { band = q.bands[i]; break; }
+  var bi = Q.bands.length - 1;
+  for (var i = 0; i < Q.bands.length; i++) {
+    if (sum <= Q.bands[i].max) { bi = i; break; }
   }
 
-  $("rtitle").textContent = "Ihre Auswertung";
   $("rscore").textContent = sum;
   $("rmax").textContent = "von " + t + " Aussagen";
   $("tmin").textContent = 0;
   $("tmax").textContent = t;
-  $("rband").textContent = band.label;
-  $("rtext").textContent = band.text;
 
   var tones = ["#7FB7C4", "#4F95A8", "#1D5C6E"];
   var sc = $("scale");
   sc.innerHTML = "";
   var prev = -1;
-  q.bands.forEach(function (b, i) {
+  Q.bands.forEach(function (b, i) {
     var seg = document.createElement("i");
     seg.style.width = ((b.max - prev) / (t + 1) * 100) + "%";
     seg.style.background = tones[Math.min(i, tones.length - 1)];
@@ -370,7 +558,7 @@ function evaluate() {
 
   var rows = $("fieldrows");
   rows.innerHTML = "";
-  q.groups.forEach(function (g) {
+  Q.groups.forEach(function (g) {
     var c = counts[g.key], m = g.items.length;
     var row = document.createElement("div");
     row.className = "frow";
@@ -392,34 +580,26 @@ function evaluate() {
     rows.appendChild(row);
   });
 
-  var pbox = $("patterns");
-  pbox.innerHTML = "";
-  var hits = q.patterns.filter(function (p) { return p.test(counts); });
-  if (hits.length) {
-    hits.forEach(function (p) {
-      var h = document.createElement("h3");
-      h.textContent = p.title;
-      var para = document.createElement("p");
-      para.textContent = p.text;
-      pbox.appendChild(h);
-      pbox.appendChild(para);
-    });
-  } else {
-    var para = document.createElement("p");
-    para.style.margin = "0";
-    para.textContent = "Ihre Antworten zeigen keines der drei typischen Verteilungsmuster deutlich. Die Balken oben zeigen, in welchen Feldern sich Ihre Kreuze häufen.";
-    pbox.appendChild(para);
-  }
-  show("result");
+  clearMarks();
+  $("band" + bi).classList.add("active");
+  Q.patterns.forEach(function (p, i) {
+    if (p.test(counts)) { $("pat" + i).classList.add("active"); }
+  });
+
+  $("personal").hidden = false;
+  $("teil4").scrollIntoView();
 }
 
 $("submit").addEventListener("click", evaluate);
-$("back").addEventListener("click", function () { show("home"); });
-$("back2").addEventListener("click", function () { show("home"); });
-$("home2").addEventListener("click", function () { show("home"); });
-$("again").addEventListener("click", function () { start(current); });
+$("again").addEventListener("click", function () {
+  clearMarks();
+  $("personal").hidden = true;
+  buildForm();
+  $("teil3").scrollIntoView();
+});
 
-renderList();
+renderStatic();
+buildForm();
 </script>
 </body>
 </html>
